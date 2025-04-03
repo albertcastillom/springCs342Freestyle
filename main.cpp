@@ -53,6 +53,7 @@ int main()
     testFraction();
     return 0;
 }
+//test functions under
 void testFraction()
 {
 
@@ -112,7 +113,7 @@ void testIsPrime()
     bool expected = false;
     (primeResult == expected) ? cout << "pass\n" : cout << "fail\n";
 }
-
+//actual functions for problems
 bool is_power_of_two(int num)
 {
     if (num == 0 )
