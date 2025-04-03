@@ -7,6 +7,8 @@ bool is_power_of_two(int num);
 bool is_power_of_two_noLoop(int num);
 bool is_prime(int num, int numSqrt);
 
+void testFraction();
+
 struct Fraction
 {
     int numerator;
@@ -15,7 +17,16 @@ struct Fraction
 
 void printFraction(const Fraction & fraction)
 {
-    cout << fraction.numerator << "/" << fraction.denominator << endl;
+    if (fraction.numerator == 0)
+    {
+        cout << "0";
+    }else if ( fraction.denominator == 0 )
+    {
+        cout << "cannot divide by zero";
+    }else
+    {
+        cout << fraction.numerator << "/" << fraction.denominator << endl;
+    }
 }
 
 int getGCD(int a, int b)
@@ -43,19 +54,44 @@ int main()
     cout << boolalpha <<"no loop result: "<< second_result << endl;
     (primeResult) ? cout << "pass\n" : cout << "fail\n";
 
-    Fraction fraction;
-    fraction.numerator = 14;
-    fraction.denominator = 5;
-    int gcd = getGCD(fraction.denominator, fraction.numerator);
-    Fraction fractionReduced;
-    fractionReduced.numerator = fraction.numerator/gcd;
-    fractionReduced.denominator = fraction.denominator/gcd;
-    printFraction(fraction);
-    printFraction(fractionReduced);
-
+    testFraction();
     return 0;
 }
+void testFraction()
+{
 
+    Fraction fraction;
+    fraction.numerator = 10;
+    fraction.denominator = 2;
+    Fraction fractionExcpected;
+    fractionExcpected.numerator= 5;
+    fractionExcpected.denominator = 1;
+
+    if (fraction.numerator == 0 )
+    {
+        printFraction(fraction);
+    }else if (fraction.denominator == 0)
+    {
+        cout << "cannot divide by zero";
+    }else
+    {
+        int gcd = getGCD(fraction.denominator, fraction.numerator);
+        Fraction fractionReduced;
+        fractionReduced.numerator = fraction.numerator/gcd;
+        fractionReduced.denominator = fraction.denominator/gcd;
+        //printFraction(fraction);
+        //printFraction(fractionReduced);
+        if (fractionExcpected.numerator == fractionReduced.numerator && fractionExcpected.denominator == fractionReduced.denominator)
+        {
+            cout << "pass\n";
+        }
+        else
+        {
+            cout << "fail\n";
+        }
+    }
+
+}
 bool is_power_of_two(int num)
 {
     if (num == 0 )
