@@ -7,6 +7,9 @@ bool is_power_of_two(int num);
 bool is_power_of_two_noLoop(int num);
 bool is_prime(int num, int numSqrt);
 
+void testPowerOfTwo();
+void testPowerOfTwoNoLoop();
+void testIsPrime();
 void testFraction();
 
 struct Fraction
@@ -44,16 +47,9 @@ int getGCD(int a, int b)
 
 int main()
 {
-
-    const int num = 5; //num for finding power of 2 and if its a prime
-    int numSqrt = round(sqrt(num)); // sqrt of num to find if its a prime
-    bool primeResult = is_prime(num, numSqrt);
-    bool result = is_power_of_two(num);
-    bool second_result = is_power_of_two_noLoop(num);
-    cout << boolalpha << result << endl;
-    cout << boolalpha <<"no loop result: "<< second_result << endl;
-    (primeResult) ? cout << "pass\n" : cout << "fail\n";
-
+    testPowerOfTwo();
+    testPowerOfTwoNoLoop();
+    testIsPrime();
     testFraction();
     return 0;
 }
@@ -90,8 +86,33 @@ void testFraction()
             cout << "fail\n";
         }
     }
-
 }
+
+void testPowerOfTwo()
+{
+    const int num = 5; //num for finding power of 2 and if its a prime
+    bool expected = false;
+    bool result = is_power_of_two(num);
+    (result == expected) ? cout << "pass\n" : cout << "fail\n";
+}
+
+void testPowerOfTwoNoLoop()
+{
+    const int num = 5;
+    bool expected = false;
+    bool result = is_power_of_two_noLoop(num);
+    (result == expected) ? cout << "pass\n" : cout << "fail\n";
+}
+
+void testIsPrime()
+{
+    int num = 4;
+    int numSqrt = round(sqrt(num)); // sqrt of num to find if its a prime
+    bool primeResult = is_prime(num, numSqrt);
+    bool expected = false;
+    (primeResult == expected) ? cout << "pass\n" : cout << "fail\n";
+}
+
 bool is_power_of_two(int num)
 {
     if (num == 0 )
